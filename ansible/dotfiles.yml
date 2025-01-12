@@ -1,0 +1,23 @@
+- name: Bootstrap development environment
+  hosts: local
+  collections:
+    - den_is.tools
+    - donhector.workstation
+  tasks:
+   - name: Install packages with apt
+     become: yes
+     ansible.builtin.apt:
+       name:
+         - git
+         - libstdc++6
+         - tmux
+         - curl
+         - liblua5.1-0-dev
+         - lua5.4
+       state: present
+  roles:
+    - lazyvim
+    - donhector.workstation.ripgrep
+    - donhector.workstation.fd
+    - den_is.tools.fzf
+    - {role: den_is.tools.lazygit, become: yes}

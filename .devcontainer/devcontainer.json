@@ -1,0 +1,21 @@
+//devcontainer.json
+{
+  "name": "base with nvim",
+
+  "build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile"
+    },
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/duduribeiro/devcontainer-features/neovim": {"release": "stable"},
+    "ghcr.io/duduribeiro/devcontainer-features/tmux": {"release": "latest"},
+  },
+
+    // "forwardPorts": [3000],
+
+  "postCreateCommand": "ln -s /workspaces/dotfiles-dev $HOME/dotfiles && ./install.sh"
+
+  // "remoteUser": "root"
+}
